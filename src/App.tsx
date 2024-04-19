@@ -1,25 +1,25 @@
-
+import { useState } from "react";
 import Alert from "./Components/alert";
 import Button from "./Components/button";
 import ListGroup from "./Components/ListGroup";
 
-const items = ['Miami','Las Vegas','Los antos','bonucci','New york']
-const listfunc = (items:string)=>{
-  console.log(items)
-}
-
-const handle = ()=> console.log('The button is pressed')
+const items = ["Miami", "Las Vegas", "Los antos", "bonucci", "New york"];
+const listfunc = (items: string) => {
+  console.log(items);
+};
 
 function App() {
-  return ( 
-    <div> 
-      <ListGroup items={items} heading="Cities" onSelectItem={listfunc}/>
-      <Alert>
-        <h5>The above list displays some of the famous things in the world</h5>
+  const [alertV, setalertV] = useState(false);
+  return (
+    <div>
+      <ListGroup items={items} heading="Cities" onSelectItem={listfunc} />
+      {alertV && (
+        <Alert onclose={()=>setalertV(false)}>
+          <h5>My alert</h5>
         </Alert>
-      <Button onclick={handle}>My Button</Button>
+      )}
+      <Button onclick={() => setalertV(true)}>My Button</Button>
     </div>
   );
 }
 export default App;
-  
