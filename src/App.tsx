@@ -13,11 +13,11 @@ function App() {
   return (
     <div>
       <ListGroup items={items} heading="Cities" onSelectItem={listfunc} />
-      {alertV && (
-        <Alert onclose={()=>setalertV(false)}>
-          <h5>My alert</h5>
-        </Alert>
-      )}
+        {alertV && ( // here by using the usestate hook it initialises the value of alertv to false and false&&something returns false hence false visibility
+          <Alert onclose={()=>setalertV(false)}>
+            <h5>My alert</h5>
+          </Alert>
+        )}
       <Button onclick={() => setalertV(true)}>My Button</Button>
     </div>
   );
